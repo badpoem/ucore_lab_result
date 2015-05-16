@@ -40,7 +40,7 @@ cond_signal (condvar_t *cvp) {
    if(cvp->count > 0){
        cvp->owner->next_count ++;
        up(&(cvp->sem));
-       down(&(cvp->owner->next));
+       cond_wait(cvp->owner->next);
        cvp->owner->next_count --;       
    }
    cprintf("cond_signal end: cvp %x, cvp->count %d, cvp->owner->next_count %d\n", cvp, cvp->count, cvp->owner->next_count);
