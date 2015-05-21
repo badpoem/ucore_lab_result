@@ -72,7 +72,6 @@ int
 vfs_lookup(char *path, struct inode **node_store) {
     int ret;
     struct inode *node;
-    cprintf("File: %s is looked up at vfs_lookup\n", path);
     if ((ret = get_device(path, &path, &node)) != 0) {
         return ret;
     }
